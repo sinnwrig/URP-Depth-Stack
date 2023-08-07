@@ -21,8 +21,6 @@ public class DepthStackRenderPass : ScriptableRenderPass
 
     public override void OnCameraSetup(CommandBuffer cmd, ref RenderingData renderingData) 
     {
-        BlitUtility.SetupBlitTargets(cmd, renderingData.cameraData.cameraTargetDescriptor);
-
         var cameraData = renderingData.cameraData;
         Camera camera = cameraData.camera;
         bool isOverlay = camera.GetUniversalAdditionalCameraData().renderType == CameraRenderType.Overlay && !cameraData.isSceneViewCamera;
@@ -66,11 +64,5 @@ public class DepthStackRenderPass : ScriptableRenderPass
 
         // Copy the depth texture into another render texture using a shader pass that encodes relevant information
         cmd.Blit(encodedDepthTarget, encodedDepthTarget, copyDepth);
-    }
-
-
-    public override void OnCameraCleanup(CommandBuffer cmd) 
-    {
-        BlitUtility.ReleaseBlitTargets();
     }
 }
