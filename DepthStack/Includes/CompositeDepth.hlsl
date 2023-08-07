@@ -18,6 +18,12 @@ float SampleDepth(float2 uv)
 }
 
 
+float4 SamplePrevDepth(float2 uv)
+{
+    return SAMPLE_TEXTURE2D(_PrevCameraDepth, sampler_PrevCameraDepth, uv);
+}
+
+
 float4 SampleCompositeDepth(float2 uv) {
 	float rawDepth = SampleDepth(uv);
 	float4 compositeDepth = 0;
