@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
+// Add this Render Feature to the active URP Renderer and assign the CopyDepth material in DepthStack/Shader to use encoded depth in a shader
+
 public class DepthStackRenderFeature : ScriptableRendererFeature
 {
     public Material copyDepth;
