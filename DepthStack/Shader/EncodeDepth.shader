@@ -1,3 +1,8 @@
+// Encodes relevant camera depth information into a four-channel texture.
+// Channel R stores raw depth
+// Channel G stores fragment camera view length for raymarched post-processing effects
+// Channels B-W store Z-Buffer parameters needed to decode and linearize raw depth
+
 Shader "Hidden/EncodeDepth"
 {
 
