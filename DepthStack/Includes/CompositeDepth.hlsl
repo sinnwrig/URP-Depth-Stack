@@ -30,7 +30,7 @@ float4 SampleCompositeDepth(float2 uv) {
 
 	if (_RenderOverlay == 1 && !(rawDepth > 0.0)) {
 		// If rendering an overlay and end of depth is reached:
-		compositeDepth = SAMPLE_TEXTURE2D(_PrevCameraDepth, sampler_PrevCameraDepth, uv);
+		compositeDepth = SamplePrevDepth(uv);
 	} else {
 		// Normal scene depth
 		compositeDepth.x = rawDepth;
@@ -69,7 +69,7 @@ float CompositeDepthScaled(float2 uv, float viewLength)
 
 	if (_RenderOverlay == 1 && !(rawDepth > 0.0)) {
 		// If rendering an overlay and end of depth is reached:
-		float4 encInfo = SAMPLE_TEXTURE2D(_PrevCameraDepth, sampler_PrevCameraDepth, uv);
+		float4 encInfo = SamplePrevDepth(uv);
 		compositeDepth = LinearEyeDepth(encInfo.x, encInfo) * encInfo.y;
 	} else {
 		// Normal scene depth
